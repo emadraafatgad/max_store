@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="retail_partner_action">
+            <field name="name">purchase</field>
+            <field name="res_model">retail.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="retail_partner_tree_view_id">
+            <field name="name">partner.tree.name</field>
+            <field name="model">retail.partner</field>
+            <field name="arch" type="xml">
+               <tree string="partner list">
+                    <field name = "name"/>
+                    <field name = "phone"/>
+               </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="retail_partner_from_view_id">
+            <field name="name">partner.from.name</field>
+            <field name="model">retail.partner</field>
+            <field name="arch" type="xml">
+               <form>
+                   <group>
+                       <field name = "name"/>
+                       <field name = "phone"/>
+                   </group>
+               </form>
+            </field>
+        </record>
+
+        <menuitem name = "partner" id = "retail_partner_id" parent="Retail_id" action="retail_partner_action"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+         <record model="ir.actions.act_window" id="retail_product_line_action">
+            <field name="name">product</field>
+            <field name="res_model">retail.product.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.ui.view" id="product_line_tree_view_id">
+            <field name="name">product.line.tree.name</field>
+            <field name="model">retail.product.line</field>
+            <field name="arch" type="xml">
+               <tree string="products line list" decoration-info="unit_cost&lt;100">
+                   <field name="product_id"/>
+                   <field name="type"/>
+                   <field name="unit_cost"/>
+                   <field name="unit_price"/>
+                   <field name="sale_quantity"/>
+                   <field name="purchase_quantity"/>
+                   <field name="discount_amount"/>
+                   <field name="discount_percent"/>
+                   <field name="total_price_before"/>
+                   <field name="total_price_after"/>
+               </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_line_form_view_id">
+            <field name="name">product.line.from.name</field>
+            <field name="model">retail.product.line</field>
+            <field name="arch" type="xml">
+               <form string="product">
+                   <group>
+                       <field name="product_id"/>
+                       <field name="type"/>
+                       <field name="unit_cost"/>
+                       <field name="unit_price"/>
+                       <field name="sale_quantity"/>
+                       <field name="purchase_quantity"/>
+                       <field name="discount_amount"/>
+                       <field name="discount_percent"/>
+                       <field name="total_price_before"/>
+                       <field name="total_price_after"/>
+                   </group>
+               </form>
+            </field>
+        </record>
+         <menuitem name = "product line"
+                   id = "retail_product_line_line_id"
+                   parent="Retail_id"
+                   action="retail_product_line_action"/>
+    </data>
+</odoo>

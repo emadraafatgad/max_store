@@ -1,0 +1,82 @@
+<odoo>
+    <data>
+        <record id="sequence_sale_order_id" model="ir.sequence">
+            <field name="name">Name</field>
+            <field name="code">code</field>
+            <field name="padding">5</field>
+            <field name="prefix">SO</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="retail_sale_order_action">
+            <field name="name">sale order</field>
+            <field name="res_model">retail.sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_order_tree_view_id">
+            <field name="name">sale.order.tree.name</field>
+            <field name="model">retail.sale.order</field>
+            <field name="arch" type="xml">
+               <tree string="order list">
+                   <field name = "customer"/>
+                   <field name = "phone"/>
+                   <!--<field name = "unit_cost"/>-->
+                   <field name = "date"/>
+                   <field name = "total_price"/>
+               </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="retail_sale_order_from_view_id">
+            <field name="name">sale.order.from.name</field>
+            <field name="model">retail.sale.order</field>
+            <field name="arch" type="xml">
+               <form>
+                   <group colspan="6">
+                       <group colspan="2" col="2">
+                           <field name = "my_seq"/>
+                           <field name = "customer"/>
+                           <field name = "phone"/>
+                           <field name = "date"/>
+                       </group>
+                       <group colspan="6">
+                           <field name = "product_line_id">
+                                <tree string="products line list" editable="bottom">
+                                   <field name="product_id"/>
+                                   <field name="type"/>
+                                   <field name="unit_price" readonly="1"/>
+                                   <field name="sale_quantity"/>
+                                   <field name="discount_amount"/>
+                                   <field name="discount_percent"/>
+                                   <field name="total_price_before"/>
+                                   <field name="total_price_after"/>
+                                </tree>
+                               <form string="product">
+                                   <group>
+                                       <field name="product_id"/>
+                                       <field name="type"/>
+                                       <field name="unit_cost"/>
+                                       <field name="unit_price"/>
+                                       <field name="sale_quantity"/>
+                                       <field name="purchase_quantity"/>
+                                       <field name="discount_amount"/>
+                                       <field name="discount_percent"/>
+                                       <field name="total_price_before"/>
+                                       <field name="total_price_after"/>
+                                   </group>
+                               </form>
+                           </field>
+                       </group>
+                       <group>
+                           <field name = "total_price"/>
+                       </group>
+                   </group>
+               </form>
+            </field>
+        </record>
+
+        <menuitem name = "sale order" id = "retail_sale_order_id" parent="Retail_id" action="retail_sale_order_action"/>
+
+    </data>
+</odoo>

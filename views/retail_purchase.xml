@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+        <record id="sequence_purchase_id" model="ir.sequence">
+            <field name="name">Name</field>
+            <field name="code">code</field>
+            <field name="padding">5</field>
+            <field name="prefix">PO</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="retail_purchase_action">
+            <field name="name">purchase</field>
+            <field name="res_model">retail.purchase</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_tree_view_id">
+            <field name="name">purchase.tree.name</field>
+            <field name="model">retail.purchase</field>
+            <field name="arch" type="xml">
+               <tree string="purchase list">
+                    <field name="my_seq"/>
+                    <field name = "vendor"/>
+                    <field name = "product_id"/>
+               </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="retail_purchase_from_view_id">
+            <field name="name">purchase.from.name</field>
+            <field name="model">retail.purchase</field>
+            <field name="arch" type="xml">
+               <form>
+                   <group>
+                       <field name = "vendor"/>
+                       <field name = "phone"/>
+                       <field name = "product_id"/>
+                       <field name = "unit_cost"/>
+                       <field name = "quantity"/>
+                       <field name = "type"/>
+                       <field name = "date"/>
+                   </group>
+               </form>
+            </field>
+        </record>
+
+        <menuitem name = "purchase" id = "retail_purchase_id" parent="Retail_id" action="retail_purchase_action"/>
+
+    </data>
+</odoo>

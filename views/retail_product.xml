@@ -1,0 +1,106 @@
+<odoo>
+    <data>
+
+        <record id="sequence_id" model="ir.sequence">
+            <field name="name">Name</field>
+            <field name="code">code</field>
+            <field name="padding">5</field>
+            <field name="prefix">po</field>
+            <!--<field name="suffix">suffix</field>-->
+        </record>
+
+         <record model="ir.actions.act_window" id="retail_product_action">
+            <field name="name">product</field>
+            <field name="res_model">retail.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+         <!--<record model="ir.ui.view" id="product_calendar_view_id">-->
+            <!--<field name="name">product.calendar.name</field>-->
+            <!--<field name="model">retail.product</field>-->
+            <!--<field name="arch" type="xml">-->
+               <!--<calendar string="products calendar">-->
+
+                   <!--<field name="code"/>-->
+                   <!--<field name="type"/>-->
+                   <!--<field name="ready_quantity"/>-->
+
+               <!--</calendar>-->
+            <!--</field>-->
+        <!--</record>-->
+
+        <record model="ir.ui.view" id="retail_product_tree_view_id">
+            <field name="name">product.tree.name</field>
+            <field name="model">retail.product</field>
+            <field name="arch" type="xml">
+               <tree string="product list">
+                   <field name="my_seq"/>
+                   <field name="code"/>
+                   <field name="type"/>
+                   <field name="unit_cost"/>
+                   <field name="unit_price"/>
+                   <field name="ready_quantity"/>
+                   <!--<field name="desc_id" >-->
+                           <!--<tree name="desc" editable="bottom">-->
+                               <!--<field name="size"/>-->
+                               <!--<field name="color"/>-->
+                               <!--<field name="quantity"/>-->
+                            <!--</tree>-->
+                   <!--</field>-->
+               </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="retail_product_from_view_id">
+            <field name="name">product.from.name</field>
+            <field name="model">retail.product</field>
+            <field name="arch" type="xml">
+               <form>
+                   <group>
+                       <field name="my_seq"/>
+                       <field name="code"/>
+                       <field name="type"/>
+                       <field name="unit_cost"/>
+                       <field name="unit_price"/>
+                       <field name="ready_quantity"/>
+                       <field name="desc_id">
+                           <tree name="desc" editable="top">
+                               <field name="size"/>
+                               <field name="color"/>
+                               <field name="quantity"/>
+                           </tree>
+                           <form name="desc">
+                               <group>
+                                   <field name="size"/>
+                                   <field name="color"/>
+                                   <field name="quantity"/>
+                               </group>
+                           </form>
+                       </field>
+                   </group>
+               </form>
+            </field>
+        </record>
+
+        <!--<record model="ir.ui.view" id="product_search_view_id">-->
+            <!--<field name="name">product.search.name</field>-->
+            <!--<field name="model">retail.product</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<search>-->
+                   <!--<field name="code"/>-->
+                   <!--<field name="type" />-->
+                <!--</search>-->
+            <!--</field>-->
+        <!--</record>-->
+        <record model="ir.actions.act_window" id="retail_product_desc_action">
+            <field name="name">product</field>
+            <field name="res_model">product.description</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name ='Retail' id = 'Retail_id'/>
+        <menuitem name = "product" id = "retail_product_id" parent="Retail_id" action="retail_product_action"/>
+    </data>
+</odoo>
